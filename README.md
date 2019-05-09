@@ -8,6 +8,8 @@ This is a simple npm package that demonstrates the [Github Package Registry](htt
 
 ## Usage
 
-`const myPackage = require('hello-world-node-package');`
-`myPackage.helloWorld();`
+```
+const myPackage = require('hello-world-node-package');
+myPackage.helloWorld();
+```
 
