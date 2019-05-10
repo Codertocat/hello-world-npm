@@ -1,6 +1,6 @@
 {
   "name": "@codertocat/hello-world-npm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple npm package to demonstrate GitHub Package Registry",
   "main": "index.js",
   "scripts": {
