@@ -13,7 +13,7 @@ Or add this package to your `package.json` file:
 ```
 "dependencies": {
     "@codertocat/hello-world-npm": "1.0.0"
-  }
+}
 ```
 
 ## Usage
