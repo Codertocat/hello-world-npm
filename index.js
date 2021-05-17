@@ -3,5 +3,5 @@ function helloWorld() {
 }
 
 module.exports = {
-  helloWorld: helloWorld
+  helloWorld: helloWorld 
 }
