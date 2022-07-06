@@ -26,9 +26,8 @@ jobs:
           - name: Use Node.js 16
             uses: actions/setup-node@v3
             with:
-              node-version: '16' 
-          - uses: nelonoel/branch-name@v1.0.1    
+              node-version: '16'   
           - run: |
-              echo ${BRANCH_NAME}
+              echo ${GITHUB_REF##*/}
               echo ${{needs.Set_Release_Version.outputs.currentversion}}
        
