@@ -29,8 +29,9 @@ jobs:
               node-version: '16'   
           - run: |
               echo ${GITHUB_REF##*/}
+              branch=`echo "${GITHUB_REF##*/}"`
               echo ${{needs.Set_Release_Version.outputs.currentversion}}
-          - name: test    
-            if: ${GITHUB_REF##*/} == master
-            run: echo if working
+#           - name: test    
+#             if: ${GITHUB_REF##*/} == master
+#             run: echo if working
        
