@@ -34,7 +34,7 @@ jobs:
           - name: test
             run: |
               if [ "$branch" == "master" ];then
-                echo "if is working"
+                echo $branch
               fi
             
        
