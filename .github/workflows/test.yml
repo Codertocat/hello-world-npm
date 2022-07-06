@@ -18,6 +18,7 @@ jobs:
           echo $newversion is the version
           echo "::set-output name=currentversion::$newversion"
   set-job-name:
+        needs: Set_Release_Version
         runs-on: ubuntu-latest
         steps:
           - run: echo hello world
