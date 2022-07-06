@@ -10,7 +10,6 @@ jobs:
       currentversion: ${{ steps.version.outputs.currentversion }}
     steps:
       - uses: actions/checkout@v2
-      - name: Set release version
       - id: version
         run: |
           echo setting release version!!  
