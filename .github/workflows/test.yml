@@ -18,10 +18,10 @@ jobs:
           newversion=$(cat version.cfg | tr -d "[:space:]")
           echo $newversion is the version
           echo "::set-output name=currentversion::$newversion"
-  set-job-name:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo hello world
+#   set-job-name:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo hello world
 #       - uses: actions/checkout@v2
 #       - name: Use Node.js 16
 #         uses: actions/setup-node@v3
