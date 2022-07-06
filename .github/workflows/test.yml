@@ -1,4 +1,4 @@
-name: Node.js CI
+name: $jobname
 
 on:
   workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
             run: |
               if [ "${GITHUB_REF##*/}" == "master" ]
               then
-              echo "if is working"
+              jobname="${{ github.run_number }}-RC"
               else
               echo "A is not equal to B"
               fi
