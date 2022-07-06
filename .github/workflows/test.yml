@@ -30,10 +30,11 @@ jobs:
           - run: |
               echo ${GITHUB_REF##*/}
               branch=`echo "${GITHUB_REF##*/}"`
+              echo $branch
               echo ${{needs.Set_Release_Version.outputs.currentversion}}
           - name: test
             run: |
-              if [ "$branch" == "master" ]
+              if [ "${GITHUB_REF##*/}" == "master" ]
               then
               echo "if is working"
               else
