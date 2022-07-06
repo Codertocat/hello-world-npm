@@ -1,4 +1,4 @@
-name: $jobname
+name: ${{ jobname }}
 
 on:
   workflow_dispatch:
