@@ -21,7 +21,8 @@ jobs:
   set-job-name:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - run: echo hello world
+#       - uses: actions/checkout@v2
 #       - name: Use Node.js 16
 #         uses: actions/setup-node@v3
 #         with:
