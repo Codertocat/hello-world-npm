@@ -33,8 +33,11 @@ jobs:
               echo ${{needs.Set_Release_Version.outputs.currentversion}}
           - name: test
             run: |
-              if [ "$branch" == "master" ];then
-                echo $branch
+              if [ "$branch" == "master" ]
+              then
+              echo "if is working"
+              else
+              echo "A is not equal to B"
               fi
             
        
