@@ -18,15 +18,15 @@ jobs:
           newversion=$(cat version.cfg | tr -d "[:space:]")
           echo $newversion is the version
           echo "::set-output name=currentversion::$newversion"
-  set-job-name:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 16
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16' 
-    - uses: nelonoel/branch-name@v1.0.1    
-    - run: |
-        echo ${BRANCH_NAME}
-        echo ${{needs.Set_Release_Version.outputs.currentversion}}
+#   set-job-name:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Use Node.js 16
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '16' 
+#     - uses: nelonoel/branch-name@v1.0.1    
+#     - run: |
+#         echo ${BRANCH_NAME}
+#         echo ${{needs.Set_Release_Version.outputs.currentversion}}
