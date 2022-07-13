@@ -17,26 +17,19 @@ jobs:
           newversion=$(cat version.cfg | tr -d "[:space:]")
           echo $newversion is the version
           echo "::set-output name=currentversion::$newversion"
-  set-job-name:
-        needs: Set_Release_Version
-        runs-on: ubuntu-latest
-        steps:
-          - run: echo hello world
-          - uses: actions/checkout@v2
-          - name: Use Node.js 16
-            uses: actions/setup-node@v3
-            with:
-              node-version: '16'   
-          - run: |
-              echo ${GITHUB_REF##*/}
-              echo ${{needs.Set_Release_Version.outputs.currentversion}}
-          - name: test
-            run: |
-              if [ "${GITHUB_REF##*/}" == "master" ]
-              then
-              jobname="${{ github.run_number }}-RC"
-              else
-              echo "A is not equal to B"
-              fi
+  build:
+    runs-on: ubuntu-latest
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    strategy:
+      matrix:
+        node-version: [10.x,12.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build --if-present
             
        
