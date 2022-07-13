@@ -1,5 +1,5 @@
 {
-  "name": "@2115-27/hello-world-npm",
+  "name": "@2115-27/hello-world-npm-pkg",
   "version": "1.0.2",
   "description": "A simple npm package to demonstrate GitHub Package Registry",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/2115-27/hello-world-npm.git"
+    "url": "https://github.com/2115-27/hello-world-npm.git"
   },
   "author": "Codertocat",
   "license": "ISC",
