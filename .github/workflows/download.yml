@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -vLJO -H 'Authorization:${{ secrets.GITHUB_TOKEN }}' 'https://api.github.com/repos/2115-27/hello-world-npm/releases/assets/22.02.000'
+          curl -L  https://github.com/2115-27/hello-world-npm/tarball/master -o hello-world-npm-pkg-22.2.96-npm.tgz
           ls -lrta
