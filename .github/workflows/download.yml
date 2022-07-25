@@ -8,5 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -L  https://github.com/2115-27/hello-world-npm/tarball/master -o hello-world-npm-pkg-22.2.96-npm.tgz | tar -xz
+          curl -L  https://github.com/2115-27/hello-world-npm/tarball/master -o hello-world-npm-pkg-22.2.96-npm.tgz 
+          tar -xz hello-world-npm-pkg-22.2.96-npm.tgz
           ls -lrta
