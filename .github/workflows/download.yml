@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-         curl -H "Accept: application/vnd.github+json" -H "Authorization: token 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" https://api.github.com/orgs/2115-27/packages/npm/hello-world-npm-pkg@22.2.96
+        wget https://github.com/2115-27/hello-world-npm/archive/refs/tags/22.02.096.zip
 #     - name: unzip      
 #       run:  |
          
