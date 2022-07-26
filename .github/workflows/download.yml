@@ -12,7 +12,7 @@ jobs:
           ls -lrta
     - name: untar      
       run:  |
-          tar zxvf 22.02.096
+          tar zxvf test release
           ls -lrta
 #     - name: list contents of .tgz  
 #       run:    tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
