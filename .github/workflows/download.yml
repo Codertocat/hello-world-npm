@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -vLJO -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' 'https://api.github.com/repos/2115-27/hello-world-npm/releases/testrelease'
+          curl -vLJO -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' 'https://api.github.com/repos/2115-27/hello-world-npm/releases/testrelease/*.zip'
           ls -lrta
     - name: untar      
       run:  |
           chmod 777 testrelease
           ls -lrta
-          tar zxvf testrelease
+          unzip *.zip
           ls -lrta
 #     - name: list contents of .tgz  
 #       run:    tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
