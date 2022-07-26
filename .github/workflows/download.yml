@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -vLJO -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' 'https://api.github.com/repos/2115-27/hello-world-npm/releases/assets/22.02.096'
+          curl -vLJO -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' 'https://api.github.com/repos/2115-27/hello-world-npm/releases/test release'
           ls -lrta
     - name: untar      
       run:  |
