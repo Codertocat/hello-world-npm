@@ -10,12 +10,12 @@ jobs:
     - run: |
           wget https://github.com/2115-27/hello-world-npm/archive/refs/tags/22.02.096.zip
           ls -lrta
-#     - name: untar      
-#       run:  |
+    - name: unzip      
+      run:  |
          
-#           ls -lrta
-#           unzip *.zip
-#           ls -lrta
+          ls -lrta
+          unzip *.zip
+          ls -lrta
 #     - name: list contents of .tgz  
 #       run:    tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
 #     - name: list contents of hello-world-npm-pkg
