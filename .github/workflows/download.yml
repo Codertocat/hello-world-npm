@@ -13,6 +13,7 @@ jobs:
     - name: untar      
       run:  |
           chmod 777 testrelease
+          ls -lrta
           tar zxvf testrelease
           ls -lrta
 #     - name: list contents of .tgz  
