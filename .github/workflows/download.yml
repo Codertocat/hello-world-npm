@@ -10,10 +10,10 @@ jobs:
     - run: |
           curl -vLJO -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' 'https://api.github.com/repos/2115-27/hello-world-npm/releases/assets/22.02.096'
           ls -lrta
-#     - name: untar to a specific name      
-#       run:  |
-#           tar zxvf hello-world-npm-pkg-22.2.96-npm.tgz >hello-world-npm-pkg
-#           ls -lrta
+    - name: untar      
+      run:  |
+          tar zxvf 22.02.096
+          ls -lrta
 #     - name: list contents of .tgz  
 #       run:    tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
 #     - name: list contents of hello-world-npm-pkg
