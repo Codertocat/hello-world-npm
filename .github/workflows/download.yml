@@ -9,7 +9,12 @@ jobs:
     steps:
     - run: |
           curl -L  https://github.com/2115-27/hello-world-npm/tarball/master -o hello-world-npm-pkg-22.2.96-npm.tgz
-          tar zxvf hello-world-npm-pkg-22.2.96-npm.tgz >hello-world-npm-pkg
-          tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
-          cat hello-world-npm-pkg
+    - name: untar to a specific name      
+      run:  tar zxvf hello-world-npm-pkg-22.2.96-npm.tgz >hello-world-npm-pkg
+    - name: list contents of .tgz  
+      run:    tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
+    - name: list contents of hello-world-npm-pkg
+      run:    cat hello-world-npm-pkg
+    - name: pwd is.....
+      run: pwd
           
