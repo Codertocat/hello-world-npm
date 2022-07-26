@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          wget https://github.com/2115-27/hello-world-npm/archive/refs/tags/22.02.096.zip
+          wget https://github-registry-files.githubusercontent.com/511033352/2d01ae80-0662-11ed-9f84-4f15e4482ffe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220726%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220726T132923Z&X-Amz-Expires=300&X-Amz-Signature=065df281fa9382595f69aac846cbcc178c63b951e18c807cc01aebce1ca22a22&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=511033352&response-content-disposition=filename%3Dhello-world-npm-pkg-22.2.96-npm.tgz&response-content-type=application%2Foctet-stream
           ls -lrta
-    - name: unzip      
-      run:  |
+#     - name: unzip      
+#       run:  |
          
-          ls -lrta
-          unzip *.zip
-          ls -lrta
+#           ls -lrta
+#           unzip *.zip
+#           ls -lrta
 #     - name: list contents of .tgz  
 #       run:    tar -ztvf hello-world-npm-pkg-22.2.96-npm.tgz
 #     - name: list contents of hello-world-npm-pkg
