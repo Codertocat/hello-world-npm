@@ -12,7 +12,7 @@ jobs:
           ls -lrta
     - name: untar      
       run:  |
-          chmod 777 testrelease
+         
           ls -lrta
           unzip *.zip
           ls -lrta
