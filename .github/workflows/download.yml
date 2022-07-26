@@ -12,6 +12,7 @@ jobs:
           ls -lrta
     - name: untar      
       run:  |
+          cd test release
           tar zxvf test release
           ls -lrta
 #     - name: list contents of .tgz  
