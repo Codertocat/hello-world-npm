@@ -6,7 +6,7 @@ permissions:
   contents: write
   packages: read
 jobs:
-  download:
+  install:
     runs-on: ubuntu-latest
     steps:
     - run: |
