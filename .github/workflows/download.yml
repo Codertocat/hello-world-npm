@@ -1,4 +1,4 @@
-name: Install Package
+name: Get Package
 
 on:
   workflow_dispatch:
@@ -9,6 +9,8 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
+    - name: checkout
+      uses: actions/checkout@v3
     - run: |
         npm install @2115-27/hello-world-npm-pkg@22.2.96
         ls -lrta
