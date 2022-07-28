@@ -1,4 +1,4 @@
-name: Download Package
+name: Install Package
 
 on:
   workflow_dispatch:
@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        wget https://github.com/2115-27/hello-world-npm/archive/refs/tags/22.02.096.zip
+        npm install @2115-27/hello-world-npm-pkg@22.2.96
+        ls -lrta
 #     - name: unzip      
 #       run:  |
          
