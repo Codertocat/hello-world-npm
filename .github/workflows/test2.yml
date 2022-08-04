@@ -1,4 +1,4 @@
-name:variabletest
+name: variabletest
 on:
   workflow_dispatch:
       inputs: 
