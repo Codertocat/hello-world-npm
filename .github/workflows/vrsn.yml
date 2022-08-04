@@ -6,12 +6,17 @@ jobs:
    vrsn:
     runs-on: ubuntu-latest
     outputs:
-      test: ${{ steps.version.outputs.test }}
+      test: ${{ steps.stepa.outputs.test }}
     steps:
      - id: stepa 
        run: |  
           variable='value'
           echo $variable
           echo "::set-output name=test::$variable"
-     - name: stepb   
-       run: echo ${{needs.vrsn.outputs.test}}
+     - name: check   
+       run: echo ${{needs.vrsn.outputs.test}}      
+   second:
+      runs-on: ubuntu-latest      
+      steps:
+        - name: check   
+          run: echo ${{needs.vrsn.outputs.test}}
