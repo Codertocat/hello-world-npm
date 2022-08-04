@@ -16,7 +16,8 @@ jobs:
      - name: check   
        run: echo ${{needs.vrsn.outputs.test}}      
    second:
-      runs-on: ubuntu-latest      
+      runs-on: ubuntu-latest  
+      needs: vrsn
       steps:
         - name: check   
           run: echo ${{needs.vrsn.outputs.test}}
