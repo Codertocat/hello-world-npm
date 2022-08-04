@@ -10,11 +10,11 @@ jobs:
     steps:
      - id: stepa 
        run: |  
-          variable='value'
+          variable:value
           echo $variable
           echo "::set-output name=test::$variable"
-     - name: check   
-       run: echo ${{needs.vrsn.outputs.test}}      
+     - name: checkhere   
+       run: echo ${variable}      
    second:
       runs-on: ubuntu-latest  
       needs: vrsn
