@@ -5,10 +5,13 @@ on:
 jobs:        
    vrsn:
     runs-on: ubuntu-latest
+    outputs:
+      test: ${{ steps.version.outputs.test }}
     steps:
-     - name: step 1 
+     - id: step 1 
        run: |  
           variable='value'
           echo $variable
+          echo "::set-output name=test::$variable"
      - name: step 2   
-       run: echo $variable
+       run: echo ${{needs.vrsn.outputs.test}}
