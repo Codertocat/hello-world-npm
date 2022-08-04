@@ -25,19 +25,22 @@ jobs:
    SetVariables: 
     runs-on: ubuntu-latest
     outputs:
-      env: ${{ steps.environment.outputs.env }}
+      dest: ${{ steps.destination.outputs.dest }}
     steps:
-      - id: environment
+      - id: destination
         run: |
-          env=${{ github.event.inputs.environment }}
-          echo $env
-          echo "::set-output name=env::$env"
+           if [[ $env == agt ]]; then
+             dest="dev-agt"
+           else 
+             dest="$env"
+           fi
+           echo "::set-output name=dest::$dest"
    second: 
     runs-on: ubuntu-latest
     needs: SetVariables
     steps:   
       - run: |
-          echo ${{needs.SetVariables.outputs.env}}
-          Env="${{needs.SetVariables.outputs.env}}"
-          echo $Env       
+          echo ${{needs.SetVariables.outputs.dest}}
+          Dest="${{needs.SetVariables.outputs.dest}}"
+          echo $Dest       
           
