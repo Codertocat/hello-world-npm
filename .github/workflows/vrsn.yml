@@ -1,0 +1,14 @@
+name: version
+
+on:
+  workflow_dispatch:
+jobs:        
+   vrsn:
+    runs-on: ubuntu-latest
+    steps:
+     - name: step 1 
+       run: |  
+          variable='value'
+          echo $variable
+     - name: step 2   
+       run: echo $variable
