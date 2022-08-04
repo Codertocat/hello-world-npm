@@ -25,9 +25,10 @@ jobs:
    SetVariables: 
     runs-on: ubuntu-latest
     outputs:
-      dest: ${{ steps.destination.outputs.dest }}
+      UIBucketName: ${{ steps.Bucketid.outputs.UIBucketName }}
     steps:
-      - id: destination
+     
+      - id: Bucketid
         run: |
            env=${{ github.event.inputs.environment }}
            if [[ $env == agt ]]; then
@@ -37,7 +38,14 @@ jobs:
              dest="$env"
              echo $dest
            fi
-           echo "::set-output name=dest::$dest"
+           if [ $env == wgpg ] || [ $env == aspg ]; then
+               UIBucketName="cpq-$dest.agcocorp.dcx"
+            else
+               UIBucketName="cpq-$dest.agcocorp.com"   
+            fi   
+            echo $UIBucketName is bucketname
+            echo "::set-output name=UIBucketName::$UIBucketName"
+
    second: 
     runs-on: ubuntu-latest
     needs: SetVariables
