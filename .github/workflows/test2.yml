@@ -37,7 +37,7 @@ jobs:
     needs: SetVariables
     steps:   
       - run: |
-          echo ${{needs.Set_Release_Version.outputs.currentversion}}
-          Env="${{needs.Set_Release_Version.outputs.currentversion}}"
+          echo ${{needs.SetVariables.outputs.env}}
+          Env="${{needs.SetVariables.outputs.env}}"
           echo $Env       
           
