@@ -1,0 +1,42 @@
+name:variabletest
+on:
+  workflow_dispatch:
+      inputs: 
+       version:
+        description: 'Version'
+        default: '1.0-SNAPSHOT'
+        required: true
+        type: string
+       environment:
+        type: choice
+        description: environment
+        options: 
+        - pg
+        - wgpg
+        - aspg
+        - agt
+        - dev
+        - test
+        - stg
+        - hotfix
+
+      
+jobs:
+   SetVariables: 
+    runs-on: ubuntu-latest
+    outputs:
+      env: ${{ steps.environment.outputs.env }}
+    steps:
+      - id: environment
+        run: |
+          env=${{ github.event.inputs.environment }}
+          echo $env
+          echo "::set-output name=env::$env"
+   second: 
+    runs-on: ubuntu-latest
+    steps:   
+      - run: |
+          echo ${{needs.Set_Release_Version.outputs.currentversion}}
+          Env="${{needs.Set_Release_Version.outputs.currentversion}}"
+          echo $Env       
+          
