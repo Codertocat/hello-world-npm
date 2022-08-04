@@ -29,10 +29,13 @@ jobs:
     steps:
       - id: destination
         run: |
+           env=${{ github.event.inputs.environment }}
            if [[ $env == agt ]]; then
              dest="dev-agt"
+             echo $dest
            else 
              dest="$env"
+             echo $dest
            fi
            echo "::set-output name=dest::$dest"
    second: 
