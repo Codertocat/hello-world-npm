@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Worflow_name:
+  Job_One_name:
     runs-on: ubuntu-latest
     
     steps:
