@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - run: echo ${{ github.workflow }} is the github workflow
+      - run: |
+          echo ${{ github.workflow }} is the github workflow
+          echo ${{ github.job }} is the job id of the current job
       
