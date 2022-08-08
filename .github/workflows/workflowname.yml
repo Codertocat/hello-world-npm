@@ -1,0 +1,12 @@
+name: Workflowname
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Worflow_name:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: echo ${{ github.workflow }} is the github workflow
+      
