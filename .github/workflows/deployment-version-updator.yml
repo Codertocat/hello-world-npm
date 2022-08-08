@@ -1,0 +1,10 @@
+name: TestDeploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  buildnumber:
+    runs-on: ubuntu-latest
+    steps:
+      -  run: echo ${{ github.run_number }} is the build number
