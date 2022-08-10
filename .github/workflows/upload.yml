@@ -10,8 +10,8 @@ jobs:
       - run: |
           mkdir directory
           cd directory/
-          cat file1.txt
-          cat file2.txt
+          touch file1.txt file2.txt  
+          ls -lrta
           cd ..
           ls -lrta
           
