@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          mkdir downloads
           mkdir directory
+          ls -lrta
           cd directory/
           touch file1.txt file2.txt  
           ls -lrta
@@ -27,7 +29,8 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: 22.02.000
-
+          path: ./downloads
+          
       - name: Display structure of downloaded files
         run: ls -R
           
