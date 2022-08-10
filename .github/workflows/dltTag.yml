@@ -1,0 +1,11 @@
+name: Delete-tag-and-release
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  packages: read
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -u 2115-27:Athulya@2115 --request DELETE "https://github.com/2115-27/hello-world-npm/releases/tag/169"
