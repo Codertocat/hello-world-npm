@@ -1,0 +1,35 @@
+name: Upload
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir directory
+          cd directory/
+          cat file1.txt
+          cat file2.txt
+          cd ..
+          ls -lrta
+          
+     - uses: actions/upload-artifact@v3
+        with:
+          name: 22.02.000
+          path: ./directory 
+          retention-days: 1
+          
+  Download-artifact:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+
+      - name: Display structure of downloaded files
+        run: ls -R
+          
+          
