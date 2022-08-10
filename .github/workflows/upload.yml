@@ -12,8 +12,6 @@ jobs:
           cd directory/
           touch file1.txt file2.txt  
           ls -lrta
-          cd ..
-          ls -lrta
           
       - uses: actions/upload-artifact@v3
         with:
