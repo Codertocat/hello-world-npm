@@ -32,6 +32,8 @@ jobs:
           path: ./downloads
           
       - name: Display structure of downloaded files
-        run: ls -R
+        run: |
+          ls -R
+          ls -lrta
           
           
