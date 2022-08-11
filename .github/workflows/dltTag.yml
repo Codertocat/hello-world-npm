@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: Deleting Snapshot version
-       run: |
-        
+       run: |        
             gh release delete-asset 1.0-SNAPSHOT AppName1.0-SNAPSHOT.zip
             gh release delete 1.0-SNAPSHOT
-        
        env:
-           GHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
