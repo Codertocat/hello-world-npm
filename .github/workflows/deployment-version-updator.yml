@@ -6,5 +6,6 @@ on:
 jobs:
   buildnumber:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
-      -  run: echo ${{ github.run_number }} is the build number
+      -  run: cd nodirectory/
