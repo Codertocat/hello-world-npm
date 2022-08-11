@@ -10,11 +10,9 @@ jobs:
     steps:
      - name: Deleting Snapshot version
        run: |
-          if [[ ${{ github.event.inputs.snapshot }} == 'true' ]];then
+        
             gh release delete-asset 1.0-SNAPSHOT AppName1.0-SNAPSHOT.zip
             gh release delete 1.0-SNAPSHOT
-          else
-           echo "Skipping the step as the version is not matching with 1.0-SNAPSHOT"
-          fi
+        
        env:
            GHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
