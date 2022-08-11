@@ -8,6 +8,9 @@ jobs:
   delete:
     runs-on: ubuntu-latest
     steps:
+     - uses: actions/checkout@v2
+       with:
+        ref: '1.0-SNAPSHOT'
      - name: Deleting Snapshot version
        run: |        
             gh release delete 1.0-SNAPSHOT -y
