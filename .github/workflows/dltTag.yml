@@ -8,4 +8,13 @@ jobs:
   delete:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -u 2115-27:Athulya@2115 --request DELETE "https://api.github.com/repos/2115-27/hello-world-npm/releases/169"
+     - name: Deleting Snapshot version
+       run: |
+          if [[ ${{ github.event.inputs.snapshot }} == 'true' ]];then
+            gh release delete-asset 1.0-SNAPSHOT AppName1.0-SNAPSHOT.zip
+            gh release delete 1.0-SNAPSHOT
+          else
+           echo "Skipping the step as the version is not matching with 1.0-SNAPSHOT"
+          fi
+       env:
+           GHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
