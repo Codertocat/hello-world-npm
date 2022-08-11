@@ -11,16 +11,10 @@ jobs:
    steps:
      - run: echo version
      
-  testa:
-    runs-on: ubuntu-latest
+  testa:    
+    name: Version updator
     needs: version
-    continue-on-error: true
-    steps:
-      - run: |
-          cd directory/
-          touch file1.txt file2.txt  
-          ls -lrta
-          
+    uses: ./.github/workflows/deployment-version-updator.yml            
           
   testb:
     runs-on: ubuntu-latest
