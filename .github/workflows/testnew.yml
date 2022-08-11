@@ -1,0 +1,33 @@
+name: test
+
+on:
+  workflow_dispatch:  
+
+  
+jobs:        
+
+  testa:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          cd directory/
+          touch file1.txt file2.txt  
+          ls -lrta
+          
+          
+  testb:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo test b!!
+      
+  testc:
+    runs-on: ubuntu-latest
+    needs: testb
+    steps: 
+      - run: echo test c!!  
+      
+  testd:
+    runs-on: ubuntu-latest
+    needs: testc
+    steps: 
+      - run: echo test d!!    
