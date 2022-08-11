@@ -14,6 +14,7 @@ jobs:
   testa:
     runs-on: ubuntu-latest
     needs: version
+    continue-on-error: true
     steps:
       - run: |
           cd directory/
@@ -29,7 +30,7 @@ jobs:
       
   testc:
     runs-on: ubuntu-latest
-    needs: testb
+    needs: [testa,testb]
     steps: 
       - run: echo test c!!  
       
