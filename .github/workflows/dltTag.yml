@@ -10,7 +10,6 @@ jobs:
     steps:
      - name: Deleting Snapshot version
        run: |        
-            gh release delete-asset 1.0-SNAPSHOT AppName1.0-SNAPSHOT.zip
-            gh release delete 1.0-SNAPSHOT
+            gh release delete 1.0-SNAPSHOT -y
        env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
