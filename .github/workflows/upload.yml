@@ -12,7 +12,25 @@ permissions:
     packages: write 
   
 jobs:        
-
+  Set_Release_Version:
+    runs-on: ubuntu-latest
+    outputs:
+      currentversion: ${{ steps.version.outputs.currentversion }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: version
+        run: |
+        
+            if [[ ${{ github.event.inputs.snapshot }} == 'true' ]];then
+              ReleaseVersion="1.0-SNAPSHOT"
+              echo "::set-output name=currentversion::$ReleaseVersion"
+            else
+              echo "${{ github.run_number }}" >> version.cfg
+              newversion=$(cat version.cfg | tr -d "[:space:]")
+              echo $newversion is the version
+              echo "::set-output name=currentversion::$newversion"
+            fi
+            
   Upload-artifact:
     runs-on: ubuntu-latest
     steps:
