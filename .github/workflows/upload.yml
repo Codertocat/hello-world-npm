@@ -61,21 +61,21 @@ jobs:
       - name: test
         run: echo ${{steps.run_tests.outputs.*}} is the artifact name
         
-#       - name: Create Github Release
-#         id: create_release
-#         uses: actions/create-release@v1
-#         env:
-#            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         with:
-#            tag_name: ${{needs.Set_Release_Version.outputs.currentversion}}
-#            release_name: cpqui-${{needs.Set_Release_Version.outputs.currentversion}}
+      - name: Create Github Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+           tag_name: ${{needs.Set_Release_Version.outputs.currentversion}}
+           release_name: cpqui-${{needs.Set_Release_Version.outputs.currentversion}}
 
-#       - name: Upload Artifacts to Github Release
-#         uses: actions/upload-release-asset@v1
-#         env:
-#            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         with:
-#             upload_url: ${{ steps.create_release.outputs.upload_url }}
-#             asset_path: ./${{steps.run_tests.outputs.artifactname}}
-#             asset_name: cpqui-${{needs.Set_Release_Version.outputs.currentversion}}.zip
-#             asset_content_type: application/zip    
+      - name: Upload Artifacts to Github Release
+        uses: actions/upload-release-asset@v1
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: ./${{steps.run_tests.outputs.artifactname}}
+            asset_name: cpqui-${{needs.Set_Release_Version.outputs.currentversion}}.zip
+            asset_content_type: application/zip    
