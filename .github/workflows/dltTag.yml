@@ -16,6 +16,8 @@ jobs:
             gh release list >> release.txt
             ls -lrta
             cat release.txt
+            while read line; do echo $line; done < release.txt
+            grep -i "^1.0-SNAPSHOT" release.txt | { grep -v grep || true; }
             gh release delete 1.0-SNAPSHOT -y
        env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
