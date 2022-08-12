@@ -19,9 +19,12 @@ jobs:
             cat release.txt
             echo ----------------- each line content-----------------
             while read line; do echo $line; done < release.txt
-            echo -------------grep result----------------------------
-            grep -i "^AppName-1.0-SNAPSHOT" release.txt | { grep -v grep || true; }
-            gh release delete 1.0-SNAPSHOT
+            echo -------------deleting snapshot only if it already exists----------------------------
+            if [ grep -i "^AppName-1.0-SNAPSHOT" release.txt | { grep -v grep || true; }];then
+              gh release delete 1.0-SNAPSHOT
+            else
+              echo Skipping deletion since 1.0-SNAPSHOT version doesn't exist already
+            fi  
            
        env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
