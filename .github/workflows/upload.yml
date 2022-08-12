@@ -69,11 +69,11 @@ jobs:
         run: |
             ls -lrta
             if [ ${{needs.Set_Release_Version.outputs.currentversion}} == '1.0-SNAPSHOT' ]; then
-             7z a cpqui-artifact.zip ./downloads
-             echo "::set-output name=artifactname::cpqui-artifact.zip"
+             7z a app-artifact.zip ./downloads
+             echo "::set-output name=artifactname::app-artifact.zip"
             else 
-             7z a cpqui-artifact-nightly.zip ./downloads
-             echo "::set-output name=artifactname::cpqui-artifact-nightly.zip"
+             7z a app-artifact-nightly.zip ./downloads
+             echo "::set-output name=artifactname::app-artifact-nightly.zip"
             fi  
             
             ls -lrta   
@@ -87,7 +87,7 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
            tag_name: ${{needs.Set_Release_Version.outputs.currentversion}}
-           release_name: cpqui-${{needs.Set_Release_Version.outputs.currentversion}}
+           release_name: app-${{needs.Set_Release_Version.outputs.currentversion}}
 
       - name: Upload Artifacts to Github Release
         uses: actions/upload-release-asset@v1
@@ -95,6 +95,6 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ./${{steps.run_tests.outputs.artifactname}}
-            asset_name: cpqui-${{needs.Set_Release_Version.outputs.currentversion}}.zip
+            asset_path: ./app-artifact.zip
+            asset_name: app-${{needs.Set_Release_Version.outputs.currentversion}}.zip
             asset_content_type: application/zip    
