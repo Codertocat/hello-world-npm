@@ -20,7 +20,7 @@ jobs:
             echo ----------------- each line content-----------------
             while read line; do echo $line; done < release.txt
             echo -------------grep result----------------------------
-            grep -i "^1.0-SNAPSHOT" release.txt | { grep -v grep || true; }
+            grep -i "^*-1.0-SNAPSHOT" release.txt | { grep -v grep || true; }
            
        env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
