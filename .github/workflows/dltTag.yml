@@ -21,10 +21,11 @@ jobs:
             while read line; do echo $line; done < release.txt
             echo -------------deleting snapshot only if it already exists----------------------------
             snapversion=$(grep -q -i "^AppName-1.0-SNAPSHOT" release.txt | { grep -v grep || true; })
-            if [ $snapversion != " " ];then
-              gh release delete 1.0-SNAPSHOT
+            echo $snapversion
+            if [ -z "$snapversion" ];then
+              echo "Skipping deletion since 1.0-SNAPSHOT version doesn't exist already"              
             else
-              echo "Skipping deletion since 1.0-SNAPSHOT version doesn't exist already"
+              gh release delete 1.0-SNAPSHOT
             fi  
            
        env:
