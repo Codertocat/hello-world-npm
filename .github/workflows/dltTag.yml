@@ -21,6 +21,7 @@ jobs:
             while read line; do echo $line; done < release.txt
             echo -------------grep result----------------------------
             grep -i "^AppName-1.0-SNAPSHOT" release.txt | { grep -v grep || true; }
+            gh release delete 1.0-SNAPSHOT
            
        env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
