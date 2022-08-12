@@ -15,8 +15,11 @@ jobs:
        run: | 
             gh release list >> release.txt
             ls -lrta
+            echo ---------------file content---------
             cat release.txt
+            echo ----------------- each line content-----------------
             while read line; do echo $line; done < release.txt
+            echo -------------grep result----------------------------
             grep -i "^1.0-SNAPSHOT" release.txt | { grep -v grep || true; }
            
        env:
