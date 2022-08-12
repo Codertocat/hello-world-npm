@@ -12,7 +12,10 @@ jobs:
        with:
         ref: '1.0-SNAPSHOT'
      - name: Deleting Snapshot version
-       run: |        
+       run: | 
+            gh release list >> release.txt
+            ls -lrta
+            cat release.txt
             gh release delete 1.0-SNAPSHOT -y
        env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
