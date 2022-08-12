@@ -33,6 +33,7 @@ jobs:
             
   Upload-artifact:
     runs-on: ubuntu-latest
+    needs: Set_Release_Version
     steps:
       - run: |
           mkdir downloads
@@ -50,7 +51,7 @@ jobs:
           
   Download-artifact:
     runs-on: ubuntu-latest
-    needs: Upload-artifact
+    needs: [Upload-artifact,Set_Release_Version]
     steps: 
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v3
