@@ -15,7 +15,7 @@ jobs:
        run: | 
             gh release list >> release.txt
             ls -lrta
-            echo ---------------file content---------
+            echo ---------------List of github releases stored in release.txt file---------
             cat release.txt
             echo -------------checks for snapshot version and deleting if it exists----------------------------
             snapversion=$(grep -i "^AppName-1.0-SNAPSHOT" release.txt | { grep -v grep || true; })
