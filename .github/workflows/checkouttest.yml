@@ -1,0 +1,19 @@
+name: checkout_test
+on:
+  workflow_dispatch:
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest 
+      
+    steps:
+      - name: Print the analysis branch
+        run: echo ${{ github.head_ref }}
+        
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      
+      - run: |
+          ls -lrta     
