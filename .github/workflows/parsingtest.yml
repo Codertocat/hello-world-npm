@@ -1,0 +1,24 @@
+name: parsingtest
+on:
+  workflow_dispatch:
+
+jobs:
+  parsing:
+    runs-on: ubuntu-latest 
+      
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+         with:
+           ref: ${{ github.head_ref }}
+       -  run: |
+             ls -lrta
+             firsturl="newvalueoffirsturl"
+             secondurl="newvalue2"
+             thirdurl="newvalue3"
+             echo $firsturl
+             echo $secondurl
+             echo $thirdurl
+             jq -n --arg firsturl "$firsturl" --arg secondurl "$secondurl" --arg thirdurl "$thirdurl"  '.firsturl=$firsturl | .secondurl=$secondurl | .thirdurl=$thirdurl' test-app-config.json
+             echo -------file content after parsing-------
+             cat test-app-config.json
