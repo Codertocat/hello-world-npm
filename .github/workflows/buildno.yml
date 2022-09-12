@@ -1,12 +1,35 @@
-name: buildNumber
+name: pgbuildtest
 
 on:
   workflow_dispatch:
 env:
   GITHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
-jobs:
-  buildNumber:
+jobs:        
+  Set_Release_Version:
     runs-on: ubuntu-latest
+    outputs:
+      currentversion: ${{ steps.version.outputs.currentversion }}
     steps:
       - uses: actions/checkout@v2
-      - run : echo $BUILD_NUMBER
+      - id: version
+        run: |
+        
+            if [[ $GITHUB_REF_NAME == "master" || $GITHUB_REF_NAME == "dev-WIP3-sonartest" ]];then
+              echo "${{ github.run_number }}" >> version.cfg
+              newversion=$(cat version.cfg | tr -d "[:space:]")
+              echo $newversion is the version
+              echo "::set-output name=currentversion::$newversion" 
+            else
+              ReleaseVersion="1.0-SNAPSHOT"
+              echo $ReleaseVersion is the version
+              echo "::set-output name=currentversion::$ReleaseVersion"
+            fi
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [[ ${{needs.Set_Release_Version.outputs.currentversion}} == "1.0-SNAPSHOT" ]]; then
+           echo building for snapshot
+          else
+           echo building for release
+          fi 
