@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - id: version
         run: |
-           
+            echo -----
+            echo $GITHUB_REF_NAME
             if [[ $GITHUB_REF_NAME == "master" || $GITHUB_REF_NAME == "dev-WIP3-sonartest" ]];then
               echo "${{ github.run_number }}" >> version.cfg
               newversion=$(cat version.cfg | tr -d "[:space:]")
