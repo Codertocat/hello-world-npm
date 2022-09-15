@@ -1,6 +1,6 @@
 name: STG_DEPLOY
 on:
-  workflow_dispatch:
+  workflow_call:
   schedule:
     - cron: '*/5 * * * *'
 jobs:        
