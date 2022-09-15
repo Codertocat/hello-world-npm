@@ -4,6 +4,7 @@ on:
 jobs:        
    Deploy:
     runs-on: ubuntu-latest
+    environment: STG
     steps: 
       - run: |
           echo stage deployment steps
