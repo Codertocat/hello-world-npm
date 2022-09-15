@@ -11,8 +11,4 @@ jobs:
       - run: |
           echo stage deployment steps
           
-      - name: disable workflow
-        run:  |
-          gh workflow disable STGdeploy.yml -R 2115-27/hello-world-npm
-        env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
