@@ -10,3 +10,8 @@ jobs:
     steps: 
       - run: |
           echo stage deployment steps
+      - name: disable workflow
+        run:  |
+          gh workflow disable STGdeploy.yml
+        env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
