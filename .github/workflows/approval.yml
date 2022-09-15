@@ -19,8 +19,12 @@ jobs:
           echo test, and deploy your project.
           
   STG_Deploy:
-    needs: build
-    uses: ./.github/workflows/STGdeploy.yml
+   runs-on: ubuntu-latest
+   needs: build
+   environment: STG
+   steps:
+     - name: Deployment
+       run: echo Hello, world Deployment!
         
   Job3:
      runs-on: ubuntu-latest
