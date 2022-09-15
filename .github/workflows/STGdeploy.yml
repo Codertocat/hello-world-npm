@@ -1,0 +1,9 @@
+name: STG_DEPLLOY
+on:
+  workflow_call:  
+jobs:        
+   Deploy:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: |
+          echo stage deployment steps
