@@ -1,4 +1,4 @@
-name: STG_DEPLLOY
+name: STG_DEPLOY
 on:
   workflow_call:
   schedule:
