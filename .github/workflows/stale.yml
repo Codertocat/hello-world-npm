@@ -1,0 +1,11 @@
+name: DLT_STALE
+
+on:
+  workflow_dispatch:
+
+jobs: 
+  listStaleBranches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List stale branches
+        run: git branch --sort=committerdate | xargs echo
