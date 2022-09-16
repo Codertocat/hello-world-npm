@@ -7,5 +7,10 @@ jobs:
   listStaleBranches:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }} 
+          
       - name: List stale branches
         run: git branch --sort=committerdate | xargs echo
