@@ -17,4 +17,4 @@ jobs:
             curl \
             -H "Accept: application/vnd.github+json" \ 
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/OWNER/REPO/branches
+            https://api.github.com/repos/2115-27/hello-world-npm/branches
