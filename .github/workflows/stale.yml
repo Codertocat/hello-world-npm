@@ -13,4 +13,4 @@ jobs:
           ref: ${{ github.head_ref }} 
           
       - name: List stale branches
-        run: git branch 
+        run: git branch -a
