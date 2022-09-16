@@ -14,7 +14,4 @@ jobs:
           
       - name: List stale branches
         run:  |
-            curl \
-            -H "Accept: application/vnd.github+json" \ 
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/2115-27/hello-world-npm/branches
+            curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/2115-27/hello-world-npm/branches
