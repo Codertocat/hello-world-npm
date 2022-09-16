@@ -10,6 +10,7 @@ jobs:
           
       - name: List stale branches
         run:  |
+            git clone https://github.com/2115-27/hello-world-npm.git
             echo ----git branch -av----
             git branch -av
             curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/2115-27/hello-world-npm/branches
