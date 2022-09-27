@@ -15,5 +15,6 @@ jobs:
              pwd
              ls -ahl
       - run: |
+          cd hello-world-npm/
           ng update @angular/cli@13 
           ng update @angular/core@13
