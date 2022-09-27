@@ -10,8 +10,7 @@ jobs:
       - name: test
         run:  |
              npm install -g @angular/cli@latest
-             ng update @angular/cli@13
-             ng update @angular/core@13
+            
              ng version
              npm --version
              pwd
