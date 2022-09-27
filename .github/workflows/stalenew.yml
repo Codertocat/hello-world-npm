@@ -1,0 +1,21 @@
+name: DLT_STALE_TWO
+on:
+  workflow_dispatch:
+  
+jobs: 
+  Get_Stale_Branches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Stale branch list
+        run:  |
+          REPO_NAME=${{ github.event.repository.name }}
+          echo $REPO_NAME
+          
+          
+          git branch -a --sort=-committerdate  --format='%(refname:short) |%(authorname)| %(committerdate:short)'| sed /\${{ github.ref_name }}/d >> ${{ github.workspace }}/BranchDetails.txt
+          sed -i "s~origin/~~g" ${{ github.workspace }}/BranchDetails.txt
+          sed -i "s~,~~g" ${{ github.workspace }}/BranchDetails.txt
+          
+          echo --------BranchDetails.txt---------------
+          cat ${{ github.workspace }}/BranchDetails.txt
