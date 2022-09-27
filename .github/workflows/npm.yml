@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: test
         run:  |
-             npm install -g @angular/cli@latest
+             npm install -g @angular/cli@8
              ng version
              npm --version
              pwd
