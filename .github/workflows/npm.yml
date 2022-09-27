@@ -1,0 +1,16 @@
+name: NPM_TEST
+on:
+  workflow_dispatch:
+  
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test
+        run:  |
+             npm install -g @angular/cli@latest
+             ng version
+             npm --version
+             pwd
+             ls -ahl
