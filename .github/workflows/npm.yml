@@ -9,12 +9,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: test
         run:  |
-             npm install -g @angular/cli@latest            
+             npm install -g @angular/cli@latest   
+             echo ---------ng version----------------
              ng version
+             echo --------------------npm version-----------
              npm --version
              pwd
              ls -ahl
-      - run: |
-          cd hello-world-npm/
-          ng update @angular/cli@13 
-          ng update @angular/core@13
+      
