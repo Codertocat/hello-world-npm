@@ -1,0 +1,40 @@
+name: DYNA_TEST
+on:
+  workflow_dispatch:
+  
+      inputs: 
+       version:
+        description: 'Version'
+        required: true
+        type: string       
+       environment:
+        required: true
+        type: choice
+        description: environment
+        options: 
+          - pg
+          - agt
+          - wgpg
+          - aspg
+          - dev
+          - test
+   
+ 
+   testJob1:      
+      runs-on: ubuntu-latest
+      steps: 
+        -  run: echo testing   
+        
+   RefreshDynaJS:
+        name: Refresh Dynatrace js
+        needs: testJob1
+        uses: ./.github/workflows/cpqui-refresh-dynatrace-js.yml
+        with:
+         environment: ${{ github.event.inputs.environment }}
+         
+         
+   testJob: 
+      needs: [testJob1,RefreshDynaJS]
+      runs-on: ubuntu-latest
+      steps: 
+        -  run: echo testing
