@@ -1,0 +1,16 @@
+name: Test_Refresh_Dynatrace_js
+on:
+  workflow_call:
+   inputs: 
+       environment:
+        type: string
+        description: environment
+        required: true
+        
+jobs:
+   RefreshDynaJS: 
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+         echo ${{ github.event.inputs.environment }} is the env
+         DynaEnv=$(echo ${{ github.event.inputs.Environment }} | tr '[:lower:]' '[:upper:]')
