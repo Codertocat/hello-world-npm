@@ -19,22 +19,22 @@ on:
           - dev
           - test
    
- 
-   testJob1:      
-      runs-on: ubuntu-latest
-      steps: 
-        -  run: echo testing   
-        
-   RefreshDynaJS:
-        name: Refresh Dynatrace js
-        needs: testJob1
-        uses: ./.github/workflows/cpqui-refresh-dynatrace-js.yml
-        with:
-         environment: ${{ github.event.inputs.environment }}
-         
-         
-   testJob: 
-      needs: [testJob1,RefreshDynaJS]
-      runs-on: ubuntu-latest
-      steps: 
-        -  run: echo testing
+jobs:
+    testJob1:      
+        runs-on: ubuntu-latest
+        steps: 
+          -  run: echo testing   
+
+    RefreshDynaJS:
+          name: Refresh Dynatrace js
+          needs: testJob1
+          uses: ./.github/workflows/test-refresh-dynatrace-js.yml
+          with:
+           environment: ${{ github.event.inputs.environment }}
+
+
+    testJob2: 
+          needs: [testJob1,RefreshDynaJS]
+          runs-on: ubuntu-latest
+          steps: 
+            -  run: echo testing
