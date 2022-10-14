@@ -19,3 +19,4 @@ jobs:
          curl https://lgf19795.live.dynatrace.com/api/v1/rum/syncCS/APPLICATION-C952FBD2153C8C4F?Api-Token=ou1Vh_knRauS_qt1Td2T6 --output dynatrace.js
          else 
          echo nothing
+         fi
