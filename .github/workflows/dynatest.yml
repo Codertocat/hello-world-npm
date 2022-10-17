@@ -20,14 +20,14 @@ on:
           - test
    
 jobs:
-    jdk version:      
+    jdk-version:      
         runs-on: ubuntu-latest
         steps: 
           -  run: java -version 
 
     RefreshDynaJS:
           name: Refresh Dynatrace js
-          needs: testJob1
+          needs: jdk-version
           uses: ./.github/workflows/test-refresh-dynatrace-js.yml
           with:
            environment: ${{ github.event.inputs.environment }}
