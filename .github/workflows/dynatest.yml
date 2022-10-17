@@ -20,7 +20,7 @@ on:
           - test
    
 jobs:
-    testJob1:      
+    jdk version:      
         runs-on: ubuntu-latest
         steps: 
           -  run: java -version 
