@@ -34,7 +34,7 @@ jobs:
 
 
     testJob2: 
-          needs: [testJob1,RefreshDynaJS]
+          needs: [RefreshDynaJS]
           runs-on: ubuntu-latest
           steps: 
             -  run: echo testing
