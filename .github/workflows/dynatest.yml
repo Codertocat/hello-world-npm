@@ -23,7 +23,7 @@ jobs:
     testJob1:      
         runs-on: ubuntu-latest
         steps: 
-          -  run: echo testing   
+          -  run: java -version 
 
     RefreshDynaJS:
           name: Refresh Dynatrace js
