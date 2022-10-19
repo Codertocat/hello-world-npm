@@ -1,0 +1,52 @@
+name: Test_Promote_Input
+
+on:
+  workflow_dispatch:
+    inputs:
+
+      Brand:
+        required: true
+        type: choice
+        options: 
+          - F
+          - V
+          - MF
+      DataType:
+        required: true
+        type: choice
+        options: 
+          - wholegoods
+          - services   
+      PriceListID:
+        required: true
+        type: string
+        default: ""
+      ProductCategory:
+        required: true
+        type: string
+        default: ""
+      ModelRange:
+        required: true
+        type: string
+        default: ""  
+      sourceBucket:
+        required: true
+        type: string
+      targetBucket:
+        required: true
+        type: string 
+      VTC_Version:
+        required: true
+        type: choice
+        options: 
+          - 2.5.10
+          - 2.5.9
+          - 2.5.8
+  jobs:
+    TestValidation:
+      name: Validation
+      runs-on: ubuntu-latest
+      steps:
+        - name: Validation_step
+          run: echo "Sample validation job"     
+        
