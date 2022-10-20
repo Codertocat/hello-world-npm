@@ -1,11 +1,38 @@
-name: TestDeploy
-
+name: TestURL
 on:
   workflow_call:
-
+    inputs:
+      environment:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string  
+#       CompName:
+#         required: true
+#         type: string  
+#       ParentJobName:
+#         required: true
+#         type: string
+#       ParentJobId: 
+#         required: true
+#         type: string
+      GITHUB_WORKFLOW_URL:
+        required: true
+        type: string 
+  
 jobs:
-  buildnumber:
+   VersionUpdation: 
     runs-on: ubuntu-latest
-    continue-on-error: true
+
     steps:
-      -  run: cd nodirectory/
+       
+      - name : Wiki contents
+        run: |
+
+          Version=${{ github.event.inputs.version }}
+          Env=${{ github.event.inputs.environment }}
+          GITHUB_WORKFLOW_URL=${{ inputs.GITHUB_WORKFLOW_URL }}
+          TimeStamp=$(date +'%Y-%m-%dT%H:%M:%S')
+          echo $GITHUB_WORKFLOW_URL is URL of parent job
+
