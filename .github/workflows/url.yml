@@ -1,0 +1,15 @@
+name: URL_TEST
+
+on:
+  workflow_dispatch:
+
+jobs: 
+  URL:
+    runs-on: ubuntu-latest
+
+    steps:
+     
+      - name: Url test
+        run: |
+           URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+           echo $URL is the url of this action
