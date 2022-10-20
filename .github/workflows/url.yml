@@ -2,14 +2,33 @@ name: URL_TEST
 
 on:
   workflow_dispatch:
+  
+      inputs: 
+       version:
+        description: 'Version'
+        required: true
+        type: string 
+       environment:
+        required: true
+        type: choice
+        description: environment
+        options: 
+           - option1
+           - option2
+   
+permissions:
+      contents: read
+      packages: read 
+      id-token: write 
+jobs:
+         
+   DeploymentVersionUpdator:
+        name: Version updator
+        permissions:
+          contents: write
+        uses: ./.github/workflows/deployment-version-updator.yml
+        with:
+         version: ${{ github.event.inputs.version }}
+         environment: ${{ github.event.inputs.environment }}
+         GITHUB_WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-jobs: 
-  URL:
-    runs-on: ubuntu-latest
-
-    steps:
-     
-      - name: Url test
-        run: |
-           URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-           echo $URL is the url of this action
