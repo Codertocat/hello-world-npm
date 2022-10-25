@@ -32,25 +32,28 @@ jobs:
               newversion=$(cat version.cfg | tr -d "[:space:]")
               echo $newversion is the version
               echo "::set-output name=currentversion::$newversion" 
+              
             else
               echo setting Snapshot version!!
               echo "${{ github.run_number }}" >> snapshot.cfg
               ReleaseVersion=$(cat snapshot.cfg | tr -d "[:space:]")
               echo $ReleaseVersion is the version
-              echo "::set-output name=currentversion::$ReleaseVersion"
+              
+              echo "currentversion=$ReleaseVersion" >> $GITHUB_OUTPUT
             fi  
               
   SNAP_BUILD_TEST:
       needs: [Set_Release_Version]
       runs-on: ubuntu-latest  
       steps:
-          - name: Checkout code
-            uses: actions/checkout@v2
+          - run: echo ${{needs.Set_Release_Version.outputs.currentversion}}
+#           - name: Checkout code
+#             uses: actions/checkout@v2
 
-          - name: Build
-            run: |
-              if [[ ${{needs.Set_Release_Version.outputs.currentversion}} == 22-03-SNAPSHOT* ]]; then
-               echo building snapshot version
-              else
-                echo building release version
-              fi  
+#           - name: Build
+#             run: |
+#               if [[ ${{needs.Set_Release_Version.outputs.currentversion}} == 22-03-SNAPSHOT* ]]; then
+#                echo building snapshot version
+#               else
+#                 echo building release version
+#               fi  
