@@ -49,7 +49,7 @@ jobs:
 
           - name: Build
             run: |
-              if [[ ${{needs.Set_Release_Version.outputs.currentversion}} == "*SNAPSHOT*" ]]; then
+              if [[ ${{needs.Set_Release_Version.outputs.currentversion}} == "^22-03-SNAPSHOT*" ]]; then
                echo building for snapshot version
               else
                 echo building release version
