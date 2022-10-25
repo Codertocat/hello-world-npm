@@ -49,8 +49,8 @@ jobs:
 
           - name: Build
             run: |
-              if [[ ${{needs.Set_Release_Version.outputs.currentversion}} = "22-03-SNAPSHOT*" ]]; then
-               echo building for snapshot version
+              if [[ $GITHUB_REF_NAME == Release* || $GITHUB_REF_NAME == "development" || $GITHUB_REF_NAME == hotfix* ]];then
+               echo building release version
               else
-                echo building release version
+                echo building snapshot version
               fi  
