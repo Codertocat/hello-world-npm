@@ -1,0 +1,56 @@
+name: SNAP_BUILD_TEST
+on: 
+  workflow_dispatch:    
+   inputs:
+      Sonar:
+        type: choice
+        description: Sonar
+        options: 
+          - Yes
+          - No
+          
+      Fortify:
+        type: choice
+        description: Fortify
+        options: 
+          - Yes
+          - No    
+  
+jobs:    
+  Set_Release_Version:
+     runs-on: ubuntu-latest
+   
+     outputs:
+       currentversion: ${{ steps.version.outputs.currentversion }}
+     steps:
+       - uses: actions/checkout@v2
+       - id: version
+         run: |
+           if [[ $GITHUB_REF_NAME == Release* || $GITHUB_REF_NAME == "development" || $GITHUB_REF_NAME == hotfix* ]];then
+              echo setting release version!!
+              echo "${{ github.run_number }}" >> version.cfg
+              newversion=$(cat version.cfg | tr -d "[:space:]")
+              echo $newversion is the version
+              echo "::set-output name=currentversion::$newversion" 
+            else
+              echo setting Snapshot version!!
+              echo "${{ github.run_number }}" >> snapshot.cfg
+              ReleaseVersion=$(cat snapshot.cfg | tr -d "[:space:]")
+              echo $ReleaseVersion is the version
+              echo "::set-output name=currentversion::$ReleaseVersion"
+            fi  
+              
+  SNAP_BUILD_TEST:
+      needs: [Set_Release_Version]
+      runs-on: ubuntu-latest  
+      steps:
+          - name: Checkout code
+            uses: actions/checkout@v2
+
+          - name: Build
+            run: |
+              if [[ ${{needs.Set_Release_Version.outputs.currentversion}} == "*SNAPSHOT*" ]]; then
+               echo building for snapshot version
+              else
+                echo building release version
+              fi  
