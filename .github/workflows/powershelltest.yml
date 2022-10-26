@@ -10,7 +10,8 @@ jobs:
            mkdir newdirectory
            mkdir anotherdirecory
            dir
-           echo ----inside newdirectory------
+           ls
+           echo "----inside newdirectory------"
            cd newdirectory/
            New-Item file1
            dir
