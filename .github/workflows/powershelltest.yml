@@ -10,8 +10,7 @@ jobs:
             $PackageName="new"
             $Release_Version="22.03.1"
             mkdir $PackageName-$Release_Version
-            cd $PackageName-$Release_Version
-             
+            
              echo "----inside newdirectory------"
              cd $PackageName-$Release_Version
              New-Item file1
