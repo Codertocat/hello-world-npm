@@ -1,0 +1,11 @@
+name: POWERSHELL
+on:
+  workflow_dispatch:
+  
+jobs: 
+  Reponame:
+    runs-on: windows-latest
+    steps:
+      - run: |
+           mkdir newdirestory/
+           ls -lrta
