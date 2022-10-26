@@ -3,6 +3,15 @@ on:
   workflow_dispatch:
   
 jobs: 
+  output-test:
+   runs-on: ubuntu-latest  
+   steps:
+    - name: Set the value
+      id: step_one
+      run: echo "::set-output name=FOO::BAR"
+    - name: Use it
+      run: echo ${{ steps.step_one.outputs.FOO }}
+  
   Reponame:
     runs-on: windows-latest
     steps:
