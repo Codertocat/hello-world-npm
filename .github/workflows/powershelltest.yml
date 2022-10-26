@@ -9,7 +9,7 @@ jobs:
       - run: |
            mkdir newdirectory
            mkdir anotherdirecory
-           ls
+           Get-ChildItem -Force
            echo "----inside newdirectory------"
            cd newdirectory/
            New-Item file1
