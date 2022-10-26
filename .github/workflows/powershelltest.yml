@@ -9,7 +9,6 @@ jobs:
       - run: |
            mkdir newdirectory
            mkdir anotherdirecory
-           dir
            ls
            echo "----inside newdirectory------"
            cd newdirectory/
