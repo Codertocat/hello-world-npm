@@ -7,5 +7,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-           mkdir newdirestory/
-           ls -lrta
+           mkdir newdirectory
+           mkdir anotherdirecory
+           dir
+           echo ----inside newdirectory------
+           cd newdirectory/
+           New-Item file1
+           dir
