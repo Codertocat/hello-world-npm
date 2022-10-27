@@ -12,7 +12,7 @@ jobs:
         
         echo "FOO=BAR" >> $GITHUB_OUTPUT
     - name: Use it
-      run: echo ${{ steps.step_one.outputs.FOO }}
+      run: echo "${{ steps.step_one.outputs.FOO }}"
   
   Reponame:
     runs-on: windows-latest
