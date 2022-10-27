@@ -17,7 +17,7 @@ jobs:
         echo $RunWG
         Source_Environment="sourceEnv"
         Brand="Brand"
-        PackageName="Dataextractor_$Brand_service_$Source_Environment"
+        PackageName="Dataextractor_${Brand}_service_${Source_Environment}"
         echo $PackageName
         
         echo "RunWG=$RunWG" >> $GITHUB_OUTPUT
