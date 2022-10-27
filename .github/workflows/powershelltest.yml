@@ -10,7 +10,7 @@ jobs:
       RunWG: ${{ steps.Validation.outputs.RunWG }}
    steps:
     - name: Set the value
-      id: step_one
+      id: Validation
       run: |
         RunWG="value"
         echo $RunWG
