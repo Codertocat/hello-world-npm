@@ -25,6 +25,19 @@ jobs:
     runs-on: windows-latest
     needs: Validation
     steps:
+      - name: step1
+        run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - name: step2
+        run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - name: step3
+        run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - name: step4
+        run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - name: step5
+        run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - run: echo "${{ needs.Validation.outputs.RunWG }}"
+      - run: echo "${{ needs.Validation.outputs.RunWG }}"
       - run: echo "${{ needs.Validation.outputs.RunWG }}"
       - run: |
             $PackageName="new"
