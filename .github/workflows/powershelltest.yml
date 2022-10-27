@@ -3,20 +3,29 @@ on:
   workflow_dispatch:
   
 jobs: 
-  output-test:
-   runs-on: windows-latest  
+  Validation:
+   name: Validation
+   runs-on: windows-latest 
+   outputs:
+      RunWG: ${{ steps.Validation.outputs.RunWG }}
    steps:
     - name: Set the value
       id: step_one
       run: |
-        
-        echo "FOO=BAR" >> $GITHUB_OUTPUT
-    - name: Use it
-      run: echo "${{ steps.step_one.outputs.FOO }}"
-  
+        RunWG="value"
+        echo $RunWG
+        echo "RunWG=$RunWG" >> $GITHUB_OUTPUT
+      
+  Job2:
+    runs-on: ubuntu-latest
+    needs: Validation
+    steps:
+      - run: echo "${{ needs.Validation.outputs.RunWG }}"
   Reponame:
     runs-on: windows-latest
+    needs: Validation
     steps:
+      - run: echo "${{ needs.Validation.outputs.RunWG }}"
       - run: |
             $PackageName="new"
             $Release_Version="22.03.1"
