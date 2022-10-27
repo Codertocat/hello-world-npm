@@ -8,13 +8,20 @@ jobs:
    runs-on: ubuntu-latest 
    outputs:
       RunWG: ${{ steps.Validation.outputs.RunWG }}
+      PackageName: ${{ steps.Validation.outputs.PackageName }}
    steps:
     - name: Set the value
       id: Validation
       run: |
         RunWG="value"
         echo $RunWG
+        Source_Environment="sourceEnv"
+        Brand="Brand"
+        PackageName="Dataextractor_$Brand_service_$Source_Environment"
+        echo $PackageName
+        
         echo "RunWG=$RunWG" >> $GITHUB_OUTPUT
+        echo "PackageName=$PackageName" >> $GITHUB_OUTPUT
       
   Job2:
     runs-on: ubuntu-latest
@@ -26,7 +33,9 @@ jobs:
     needs: Validation
     steps:
       - name: step1
-        run: echo "${{ needs.Validation.outputs.RunWG }}"
+        run: |
+          echo "${{ needs.Validation.outputs.RunWG }}"
+          echo "${{ needs.Validation.outputs.PackageName }} is package name"
       - name: step2
         run: echo "${{ needs.Validation.outputs.RunWG }}"
       - name: step3
@@ -43,7 +52,9 @@ jobs:
             $PackageName="new"
             $Release_Version="22.03.1"
             mkdir $PackageName-$Release_Version
-            
+            $Environment="environment"
+            $publishScriptPath="${{ github.workspace }}\Supporting_Files\Batch_Amazon_Publishing_$Environment.ps1"
+            echo "$publishScriptPath is the publish script path"
              echo "----inside newdirectory------"
              cd $PackageName-$Release_Version
              New-Item file1
