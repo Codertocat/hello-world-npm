@@ -34,7 +34,8 @@ jobs:
           $Release_Version="2.9.5"
           gh release download $Release_Version
           dir
-  
+        env:
+           GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
   
   Validation:
    name: Validation
