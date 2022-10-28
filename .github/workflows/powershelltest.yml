@@ -29,7 +29,8 @@ jobs:
           dir
           cd ..
           dir
-          rmdir /S /Q ${{ github.workspace }}\"$NewLocation"
+          cd ${{ github.workspace }}\$NewLocation
+          
           dir
   Validation:
    name: Validation
