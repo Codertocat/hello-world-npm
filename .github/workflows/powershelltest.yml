@@ -4,7 +4,7 @@ on:
   
 jobs:
   Upload:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps: 
       - name: Zip package
         run: |
