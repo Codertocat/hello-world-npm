@@ -20,6 +20,7 @@ jobs:
       - run: |
           $PackageName="sample-2.9.8"
           7z x "$PackageName*"
+          dir
   
   Validation:
    name: Validation
