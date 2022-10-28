@@ -18,8 +18,8 @@ jobs:
         env:
              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-             tag_name: 2.9.7
-             release_name: sample-2.9.7
+             tag_name: 2.9.8
+             release_name: sample-2.9.8
 
       - name: Upload Artifacts to Github Release
         uses: actions/upload-release-asset@v1
@@ -28,10 +28,11 @@ jobs:
         with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
             asset_path: ./sample-artifact.zip
-            asset_name: sample-2.9.7.zip
+            asset_name: sample-2.9.8.zip
             asset_content_type: application/zip
+      - uses: actions/checkout@v3
       - run: |
-          $Release_Version="2.9.7"
+          $Release_Version="2.9.8"
           gh release download $Release_Version
           dir
         env:
