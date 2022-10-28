@@ -6,37 +6,20 @@ jobs:
   Upload:
     runs-on: windows-latest
     steps: 
-      - name: Zip package
-        run: |
-            mkdir sample-artifact
-            7z a sample-artifact.zip ./sample-artifact
-            
-            
-      - name: Create Github Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-             tag_name: 2.9.8
-             release_name: sample-2.9.8
 
-      - name: Upload Artifacts to Github Release
-        uses: actions/upload-release-asset@v1
-        env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ./sample-artifact.zip
-            asset_name: sample-2.9.8.zip
-            asset_content_type: application/zip
+      
       - uses: actions/checkout@v3
+      
       - run: |
           $Release_Version="2.9.8"
           gh release download $Release_Version
           dir
         env:
            GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+           
+      - run: |
+          $PackageName="sample-2.9.8"
+          7z x "$PackageName*"
   
   Validation:
    name: Validation
