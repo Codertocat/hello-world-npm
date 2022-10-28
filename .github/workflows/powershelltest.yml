@@ -21,7 +21,13 @@ jobs:
           $PackageName="sample-2.9.8"
           7z x "$PackageName*"
           dir
-  
+          
+          mkdir ValueofNewLocation
+          cd ValueofNewLocation/
+          $NewLocation="ValueofNewLocation"
+          mkdir dirnew
+          Copy-Item -Path ${{ github.workspace }}\sample-artifact -Destination ${{ github.workspace }}\$NewLocation\dirnew -Recurse
+          dir
   Validation:
    name: Validation
    runs-on: ubuntu-latest
