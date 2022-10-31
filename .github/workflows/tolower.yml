@@ -20,7 +20,7 @@ jobs:
     steps:
       - run: |
           pwsh
-          if((${{ github.event.inputs.environment }} -eq "ENV1") -and (![string]::IsNullOrEmpty($BackDate))) {
+          if((![string]::IsNullOrEmpty($BackDate))) {
           write-host "BackDate: ${BackDate}"
           }
       - run: |
