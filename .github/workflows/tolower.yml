@@ -19,7 +19,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          pwsh
+          
+          $BackDate="${{ github.event.inputs.BackDate }}"
           if((![string]::IsNullOrEmpty($BackDate))) {
           write-host "BackDate: ${BackDate}"
           echo "echo printed"
