@@ -11,7 +11,7 @@ jobs:
     - name: Set the value
       id: step_one
       run: |
-        echo "$FOO=BAR" >> $GITHUB_OUTPUT
+        echo "FOO=BAR" >> $env:GITHUB_OUTPUT
 
     - name: Use it
       run: echo "${{ steps.step_one.outputs.$FOO }}"
