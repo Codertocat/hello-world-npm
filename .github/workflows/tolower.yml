@@ -22,6 +22,7 @@ jobs:
           pwsh
           if((![string]::IsNullOrEmpty($BackDate))) {
           write-host "BackDate: ${BackDate}"
+          echo "echo printed"
           }
       - run: |
          echo "${{ github.event.inputs.environment }} is the env"
