@@ -14,4 +14,4 @@ jobs:
         echo "FOO=BAR" >> $env:GITHUB_OUTPUT
 
     - name: Use it
-      run: echo "${{ steps.step_one.outputs.$FOO }}"
+      run: echo "${{ steps.step_one.outputs.FOO }}"
