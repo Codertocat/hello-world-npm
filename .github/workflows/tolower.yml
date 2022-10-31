@@ -17,6 +17,8 @@ jobs:
     steps:
       
       - run: |
-         echo ${{ github.event.inputs.environment }} is the env
+         echo "${{ github.event.inputs.environment }} is the env"
          $DynaEnv="$(echo ${{ github.event.inputs.Environment }} | tr '[:upper:]' '[:lower:]' )"
-         echo $DynaEnv is in lowercase
+         $sourceBucket="$(echo "bar-foo-confg-model-${Environment}" | tr '[:upper:]' '[:lower:]' )"
+         echo "$DynaEnv is in lowercase"
+         echo "$sourceBucket is the sourcebucket in lowercase"
