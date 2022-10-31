@@ -9,13 +9,19 @@ on:
         options: 
            - ENV1
            - ENV2
-
+       BackDate:
+        type: string
+        description: BackDate
+        default: ""     
         
 jobs:
    tolower: 
     runs-on: windows-latest
     steps:
-      
+      - run: |
+          if((${{ github.event.inputs.environment }} -eq "ENV1") -and (![string]::IsNullOrEmpty($BackDate))) {
+          write-host "BackDate: ${BackDate}"
+          }
       - run: |
          echo "${{ github.event.inputs.environment }} is the env"
          $DynaEnv="$(echo ${{ github.event.inputs.Environment }} | tr '[:upper:]' '[:lower:]' )"
