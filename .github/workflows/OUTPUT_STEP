@@ -1,0 +1,18 @@
+name: STEP_OUTPUT
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  output-test:
+   runs-on: ubuntu-latest  
+   steps:
+    - name: Set the value
+      id: step_one
+      run: |
+
+        echo "FOO=BAR" >> $GITHUB_OUTPUT
+
+    - name: Use it
+      run: echo "${{ steps.step_one.outputs.FOO }}"
