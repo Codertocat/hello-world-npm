@@ -1,0 +1,22 @@
+name: To-lower
+on:
+  workflow_dispatch:
+   inputs: 
+       environment:
+        type: choice
+        description: environment
+        required: true
+        options: 
+           - ENV1
+           - ENV2
+
+        
+jobs:
+   tolower: 
+    runs-on: windows-latest
+    steps:
+      
+      - run: |
+         echo ${{ github.event.inputs.environment }} is the env
+         $DynaEnv="$(echo ${{ github.event.inputs.Environment }} | tr '[:upper:]' '[:lower:]' )"
+         echo $DynaEnv is in lowercase
