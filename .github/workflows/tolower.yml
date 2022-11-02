@@ -15,11 +15,17 @@ on:
         default: ""     
         
 jobs:
-   tolower: 
-    runs-on: windows-latest
+   
+   awscli: 
+    runs-on: ubuntu-latest
     steps:
       - run: |
-          
+          echo aws version
+          aws --version 
+   lower-test: 
+    runs-on: windows-latest
+    steps:
+      - run: |    
           $BackDate="${{ github.event.inputs.BackDate }}"
           if((![string]::IsNullOrEmpty($BackDate))) {
           write-host "BackDate: ${BackDate}"
