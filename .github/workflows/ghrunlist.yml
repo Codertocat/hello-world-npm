@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v3
       - name: list
         run: |
+          sleep 180
           gh run list --workflow ghrunlist.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
