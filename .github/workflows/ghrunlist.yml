@@ -10,3 +10,5 @@ jobs:
       - name: list
         run: |
           gh run list --workflow ghrunlist.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
