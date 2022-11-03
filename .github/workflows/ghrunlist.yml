@@ -1,0 +1,12 @@
+name: listRuns
+on:
+  workflow_dispatch:
+
+jobs:
+  listRuns:
+    runs-on: ubuntu-latest 
+      
+    steps:
+      - name: list
+        run: |
+          gh run list --workflow ghrunlist.yml
