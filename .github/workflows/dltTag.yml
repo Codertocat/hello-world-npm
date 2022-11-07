@@ -13,6 +13,7 @@ jobs:
         ref: '1.0-SNAPSHOT'
      - name: Deleting Snapshot version
        run: | 
+        
             gh release list >> release.txt
             ls -lrta
             echo ---------------List of github releases stored in release.txt file---------
