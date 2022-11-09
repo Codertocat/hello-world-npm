@@ -5,7 +5,7 @@ documentation:
   - README.md
   
 typescript:
-  - any: ['src/**/*.ts']
+  - any: ['src/**/*.ts','*.ts']
   
 HTML:
   - any: ['src/**/*.html']
