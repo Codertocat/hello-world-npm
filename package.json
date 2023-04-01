@@ -1,5 +1,5 @@
 {
-  "name": "@codertocat/hello-world-npm",
+  "name": "@PavanMudigonda/playwright-tesseract",
   "version": "1.0.2",
   "description": "A simple npm package to demonstrate GitHub Package Registry",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codertocat/hello-world-npm.git"
+    "url": "git+https://github.com/PavanMudigonda/playwright-tesseract.git"
   },
-  "author": "Codertocat",
+  "author": "PavanMudigonda",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Codertocat/hello-world-npm/issues"
+    "url": "https://github.com/PavanMudigonda/playwright-tesseract/issues"
   },
-  "homepage": "https://github.com/Codertocat/hello-world-npm#readme",
+  "homepage": "https://github.com/PavanMudigonda/playwright-tesseract#readme",
   "publishConfig": {
     "registry":"https://npm.pkg.github.com/"
   }
