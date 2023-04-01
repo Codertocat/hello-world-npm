@@ -1,11 +1,11 @@
-import {Except} from './except';
+import type {Except} from './except';
 
 /**
 Create a type that requires at least one of the given keys. The remaining keys are kept as is.
 
 @example
 ```
-import {RequireAtLeastOne} from 'type-fest';
+import type {RequireAtLeastOne} from 'type-fest';
 
 type Responder = {
 	text?: () => string;
@@ -19,10 +19,12 @@ const responder: RequireAtLeastOne<Responder, 'text' | 'json'> = {
 	secure: true
 };
 ```
+
+@category Object
 */
 export type RequireAtLeastOne<
 	ObjectType,
-	KeysType extends keyof ObjectType = keyof ObjectType
+	KeysType extends keyof ObjectType = keyof ObjectType,
 > = {
 	// For each `Key` in `KeysType` make a mapped type:
 	[Key in KeysType]-?: Required<Pick<ObjectType, Key>> & // 1. Make `Key`'s type required

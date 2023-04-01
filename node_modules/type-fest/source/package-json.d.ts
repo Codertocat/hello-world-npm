@@ -1,4 +1,4 @@
-import {LiteralUnion} from './literal-union';
+import type {LiteralUnion} from './literal-union';
 
 declare namespace PackageJson {
 	/**
@@ -200,12 +200,12 @@ declare namespace PackageJson {
 		Run with the `npm restart` command, after `restart`. Note: `npm restart` will run the `stop` and `start` scripts if no `restart` script is provided.
 		*/
 		postrestart?: string;
-	} & Record<string, string>;
+	} & Partial<Record<string, string>>;
 
 	/**
 	Dependencies of the package. The version range is a string which has one or more space-separated descriptors. Dependencies can also be identified with a tarball or Git URL.
 	*/
-	export type Dependency = Record<string, string>;
+	export type Dependency = Partial<Record<string, string>>;
 
 	/**
 	Conditions which provide a way to resolve a package entry point based on the environment.
@@ -214,6 +214,7 @@ declare namespace PackageJson {
 		| 'import'
 		| 'require'
 		| 'node'
+		| 'node-addons'
 		| 'deno'
 		| 'browser'
 		| 'electron'
@@ -222,13 +223,24 @@ declare namespace PackageJson {
 		string
 	>;
 
+	type ExportConditions = {[condition in ExportCondition]: Exports};
+
 	/**
 	Entry points of a module, optionally with conditions and subpath exports.
 	*/
 	export type Exports =
+	| null
 	| string
-	| {[key in ExportCondition]: Exports}
-	| {[key: string]: Exports}; // eslint-disable-line @typescript-eslint/consistent-indexed-object-style
+	| Array<string | ExportConditions>
+	| ExportConditions
+	| {[path: string]: Exports}; // eslint-disable-line @typescript-eslint/consistent-indexed-object-style
+
+	/**
+	Import map entries of a module, optionally with conditions.
+	*/
+	export type Imports = { // eslint-disable-line @typescript-eslint/consistent-indexed-object-style
+		[key: string]: string | {[key in ExportCondition]: Exports};
+	};
 
 	export interface NonStandardEntryPoints {
 		/**
@@ -252,7 +264,7 @@ declare namespace PackageJson {
 		*/
 		browser?:
 		| string
-		| Record<string, string | false>;
+		| Partial<Record<string, string | false>>;
 
 		/**
 		Denote which files in your project are "pure" and therefore safe for Webpack to prune if unused.
@@ -267,6 +279,11 @@ declare namespace PackageJson {
 		Location of the bundled TypeScript declaration file.
 		*/
 		types?: string;
+
+		/**
+		Version selection map of TypeScript.
+		*/
+		typesVersions?: Partial<Record<string, Partial<Record<string, string[]>>>>;
 
 		/**
 		Location of the bundled TypeScript declaration file. Alias of `types`.
@@ -409,18 +426,25 @@ declare namespace PackageJson {
 		main?: string;
 
 		/**
-		Standard entry points of the package, with enhanced support for ECMAScript Modules.
+		Subpath exports to define entry points of the package.
 
-		[Read more.](https://nodejs.org/api/esm.html#esm_package_entry_points)
+		[Read more.](https://nodejs.org/api/packages.html#subpath-exports)
 		*/
 		exports?: Exports;
+
+		/**
+		Subpath imports to define internal package import maps that only apply to import specifiers from within the package itself.
+
+		[Read more.](https://nodejs.org/api/packages.html#subpath-imports)
+		*/
+		imports?: Imports;
 
 		/**
 		The executable files that should be installed into the `PATH`.
 		*/
 		bin?:
 		| string
-		| Record<string, string>;
+		| Partial<Record<string, string>>;
 
 		/**
 		Filenames to put in place for the `man` program to find.
@@ -482,7 +506,7 @@ declare namespace PackageJson {
 		/**
 		Indicate peer dependencies that are optional.
 		*/
-		peerDependenciesMeta?: Record<string, {optional: true}>;
+		peerDependenciesMeta?: Partial<Record<string, {optional: true}>>;
 
 		/**
 		Package names that are bundled when the package is published.
@@ -498,7 +522,7 @@ declare namespace PackageJson {
 		Engines that this package runs on.
 		*/
 		engines?: {
-			[EngineName in 'npm' | 'node' | string]: string;
+			[EngineName in 'npm' | 'node' | string]?: string;
 		};
 
 		/**
@@ -571,7 +595,7 @@ declare namespace PackageJson {
 		/**
 		A set of config values that will be used at publish-time. It's especially handy to set the tag, registry or access, to ensure that a given package is not tagged with 'latest', published to the global public registry or that a scoped module is private by default.
 		*/
-		publishConfig?: Record<string, unknown>;
+		publishConfig?: PublishConfig;
 
 		/**
 		Describes and notifies consumers of a package's monetary support information.
@@ -598,10 +622,38 @@ declare namespace PackageJson {
 			url: string;
 		};
 	}
+
+	export interface PublishConfig {
+		/**
+		Additional, less common properties from the [npm docs on `publishConfig`](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#publishconfig).
+		*/
+		[additionalProperties: string]: unknown;
+
+		/**
+		When publishing scoped packages, the access level defaults to restricted. If you want your scoped package to be publicly viewable (and installable) set `--access=public`. The only valid values for access are public and restricted. Unscoped packages always have an access level of public.
+		*/
+		access?: 'public' | 'restricted';
+
+		/**
+		The base URL of the npm registry.
+
+		Default: `'https://registry.npmjs.org/'`
+		*/
+		registry?: string;
+
+		/**
+		The tag to publish the package under.
+
+		Default: `'latest'`
+		*/
+		tag?: string;
+	}
 }
 
 /**
 Type for [npm's `package.json` file](https://docs.npmjs.com/creating-a-package-json-file). Also includes types for fields used by other popular projects, like TypeScript and Yarn.
+
+@category File
 */
 export type PackageJson =
 PackageJson.PackageJsonStandard &
