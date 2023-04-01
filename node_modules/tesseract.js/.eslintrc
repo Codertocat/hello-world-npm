@@ -1,0 +1,20 @@
+{
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "worker": true
+  },
+  "rules": {
+    "no-underscore-dangle": 0,
+    "no-console": 0,
+    "global-require": 0,
+    "camelcase": 0,
+    "no-control-regex": 0,
+    // Airbnb disallows ForOfStatement based on the bizarre belief that loops are not readable
+    // https://github.com/airbnb/javascript/issues/1271
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
+  }
+}
