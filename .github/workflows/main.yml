@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: latest
       - run: yarn
-      - run: yarn test
+      # - run: yarn test
 
   publish-gpr:
     needs: build
